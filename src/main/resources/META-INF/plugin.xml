@@ -1,18 +1,38 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.ponking66.dictionarycompletion</id>
-    <name>dictionary-completion Template</name>
+    <id>org.github.ponking66.ccecdit</id>
+    <name>英汉词典代码补全</name>
     <vendor>ponking66</vendor>
-
+    <depends>com.intellij.java</depends>
     <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.ponking66.dictionarycompletion.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.ponking66.dictionarycompletion.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+        <applicationService
+                serviceInterface="org.github.ponking66.ccecdit.WordManagerService"
+                serviceImplementation="org.github.ponking66.ccecdit.WordManagerServiceImpl"/>
+
+        <applicationService
+                serviceImplementation="org.github.ponking66.ccecdit.settings.CodeCompletionSettings"/>
+
+        <applicationService
+                serviceImplementation="org.github.ponking66.ccecdit.cache.FrequencyWordCacheComponent"/>
+
+        <completion.contributor
+                language="JAVA"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.DictionaryCompletionContributor"/>
+
+        <notificationGroup id="CCECDICT Notification"
+                           key="notification.ccecdit"
+                           displayType="TOOL_WINDOW"/>
+
+        <applicationConfigurable
+                parentId="tools"
+                order="last"
+                instance="org.github.ponking66.ccecdit.settings.CodeCompletionSettingsConfigurable"
+                id="org.github.ponking66.ccecdit.settings.CodeCompletionSettingsConfigurable"
+                displayName="English to Chinese dictionary"/>
+
+    </extensions>
 </idea-plugin>

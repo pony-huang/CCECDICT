@@ -1,1 +1,1 @@
-rootProject.name = "dictionary-completion"
+rootProject.name = "ccecdict"
