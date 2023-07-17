@@ -1,7 +1,7 @@
-# CCECDICT
+# [CCECDICT](https://github.com/PonKing66/CCECDICT)
 
 
-![Build](https://github.com/PonKing66/dictionary-completion/workflows/Build/badge.svg)
+![Build](https://github.com/PonKing66/CCECDICT/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
 
@@ -33,10 +33,11 @@ Code completion plugin for English to Chinese Dictionary
 
 中英字典(离线)的双解词典代码提示插件
 
-<img src="example.gif"  align = "center"  width="426"  alt="images"/>
+<img src="example.gif"  style="text-align: center"  width="426"  alt="images"/>
 
 [下载 ecdict-sqlite](https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip)，配置字典库路径
-![img.png](img.png)
+
+<img src="img.png"  style="text-align: center"  width="426"  alt="images"/>
 
 <!-- Plugin description end -->
 
