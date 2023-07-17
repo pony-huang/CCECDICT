@@ -30,6 +30,8 @@ public class DictionaryCompletionProvider extends CompletionProvider<CompletionP
 
     private final Logger LOGGER = Logger.getInstance(DictionaryCompletionProvider.class);
 
+    private boolean noticed = false;
+
     @Override
     protected void addCompletions(@NotNull CompletionParameters parameters,
                                   @NotNull ProcessingContext context,
@@ -38,7 +40,11 @@ public class DictionaryCompletionProvider extends CompletionProvider<CompletionP
         // 尚未设置字典路径
         CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
         if (StringUtil.isEmpty(settings.getSqliteDictPath())) {
-            NotificationUtil.notifyWarning(project, "尚未设置字典路径");
+            // 每次启动仅提示一次配置错误信息
+            if (!noticed) {
+                NotificationUtil.notifyWarning(project, "尚未设置字典路径");
+                noticed = !noticed;
+            }
             return;
         }
         // 用户输入的前缀

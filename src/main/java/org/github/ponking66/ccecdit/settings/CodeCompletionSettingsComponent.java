@@ -20,13 +20,15 @@ import javax.swing.*;
 public class CodeCompletionSettingsComponent {
 
     private final JPanel panel;
-    private final TextFieldWithBrowseButton sqliteDictPath = new TextFieldWithBrowseButton();
+
+    private final TextFieldWithBrowseButton ecdictSqlitePath = new TextFieldWithBrowseButton();
+
     private final IntegerField pairedWordCountTextField = new IntegerField("Maximum number of pairings", 10, 50);
 
     public CodeCompletionSettingsComponent() {
-        sqliteDictPath.addBrowseFolderListener(new TextBrowseFolderListener(FileChooserDescriptorFactory.createSingleFileDescriptor()));
+        ecdictSqlitePath.addBrowseFolderListener(new TextBrowseFolderListener(FileChooserDescriptorFactory.createSingleFileDescriptor()));
         panel = FormBuilder.createFormBuilder()
-                .addLabeledComponent(new JBLabel(Constant.SETTING_ATTRIBUTE_SQLITE_HOME_PATH_NAME), sqliteDictPath, 1, false)
+                .addLabeledComponent(new JBLabel(Constant.SETTING_ATTRIBUTE_SQLITE_HOME_PATH_NAME), ecdictSqlitePath, 1, false)
                 .addLabeledComponent(new JBLabel(Constant.SETTING_ATTRIBUTE_MAXIMUM_NUMBER_OF_PAIRINGS_NAME), pairedWordCountTextField, 1, false)
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
@@ -37,17 +39,17 @@ public class CodeCompletionSettingsComponent {
     }
 
     public JComponent getPreferredFocusedComponent() {
-        return sqliteDictPath;
+        return ecdictSqlitePath;
     }
 
     @NotNull
     public String getSqliteDictPath() {
-        return sqliteDictPath.getText();
+        return ecdictSqlitePath.getText();
     }
 
     public void setSqliteDictPath(String text) {
         if (!StringUtil.isEmpty(text)) {
-            sqliteDictPath.setText(text);
+            ecdictSqlitePath.setText(text);
         }
     }
 
