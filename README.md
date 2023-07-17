@@ -34,21 +34,25 @@ Code completion plugin for English to Chinese Dictionary
 中英字典(离线)的双解词典代码提示插件
 
 <img src="example.gif"  align = "center"  width="426"  alt="images"/>
+
+[下载 ecdict-sqlite](https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip)，配置字典库路径
+![img.png](img.png)
+
 <!-- Plugin description end -->
 
 ## Installation
 
 ~~- Using IDE built-in plugin system:~~
   
-[//]: # (  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EEECDICT"</kbd> >)
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EEECDICT"</kbd> >
 
-[//]: # (  <kbd>Install Plugin</kbd>)
+  <kbd>Install Plugin</kbd>
   
 ~~- Manually:~~
 
-[//]: # (  Download the [latest release]&#40;https://github.com/PonKing66/dictionary-completion/releases/latest&#41; and install it manually using)
+  Download the [latest release](https://github.com/PonKing66/dictionary-completion/releases/latest) and install it manually using
 
-[//]: # (  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>)
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 ---
 Plugin based on the [IntelliJ Platform Plugin Template][template].

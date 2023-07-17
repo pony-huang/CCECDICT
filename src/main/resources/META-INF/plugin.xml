@@ -24,7 +24,8 @@
                 implementationClass="org.github.ponking66.ccecdit.completion.DictionaryCompletionContributor"/>
 
         <notificationGroup id="CCECDICT Notification"
-                           key="notification.ccecdit"
+                           key="plugin.ccecdit.notification"
+                           icon="/META-INF/dictionaryIcon.svg"
                            displayType="TOOL_WINDOW"/>
 
         <applicationConfigurable
@@ -32,7 +33,7 @@
                 order="last"
                 instance="org.github.ponking66.ccecdit.settings.CodeCompletionSettingsConfigurable"
                 id="org.github.ponking66.ccecdit.settings.CodeCompletionSettingsConfigurable"
-                displayName="English to Chinese dictionary"/>
+                displayName="CCECDICT"/>
 
     </extensions>
 </idea-plugin>
