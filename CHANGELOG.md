@@ -1,7 +1,13 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# dictionary-completion Changelog
+# CCECDICT Changelog
 
 ## [Unreleased]
+
+## [0.9.1] - 2023-07-17
+
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+[Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.1...HEAD
+[0.9.1]: https://github.com/PonKing66/CCECDICT/commits/v0.9.1
