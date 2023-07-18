@@ -9,8 +9,8 @@
     <extensions defaultExtensionNs="com.intellij">
 
         <applicationService
-                serviceInterface="org.github.ponking66.ccecdit.WordManagerService"
-                serviceImplementation="org.github.ponking66.ccecdit.WordManagerServiceImpl"/>
+                serviceInterface="org.github.ponking66.ccecdit.DictWordManagerService"
+                serviceImplementation="org.github.ponking66.ccecdit.DictWordManagerServiceImpl"/>
 
         <applicationService
                 serviceImplementation="org.github.ponking66.ccecdit.settings.CodeCompletionSettings"/>
@@ -26,7 +26,7 @@
         <notificationGroup id="CCECDICT Notification"
                            key="plugin.ccecdit.notification"
                            icon="/META-INF/dictionaryIcon.svg"
-                           displayType="TOOL_WINDOW"/>
+                           displayType="STICKY_BALLOON"/>
 
         <applicationConfigurable
                 parentId="tools"

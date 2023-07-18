@@ -11,7 +11,7 @@ import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.ProcessingContext;
 import org.github.ponking66.ccecdit.DictionaryIcons;
 import org.github.ponking66.ccecdit.Word;
-import org.github.ponking66.ccecdit.WordManagerService;
+import org.github.ponking66.ccecdit.DictWordManagerService;
 import org.github.ponking66.ccecdit.cache.FrequencyWordCacheComponent;
 import org.github.ponking66.ccecdit.settings.CodeCompletionSettings;
 import org.github.ponking66.ccecdit.util.NotificationUtil;
@@ -61,10 +61,10 @@ public class DictionaryCompletionProvider extends CompletionProvider<CompletionP
             return;
         }
         FrequencyWordCacheComponent frequencyWordCacheComponent = FrequencyWordCacheComponent.getInstance();
-        WordManagerService wordManagerService = ApplicationManager.getApplication().getService(WordManagerService.class);
+        DictWordManagerService dictWordManagerService = ApplicationManager.getApplication().getService(DictWordManagerService.class);
         Map<String, Integer> cache = Objects.requireNonNull(frequencyWordCacheComponent.getState()).getCache();
         Set<String> keys = cache.keySet();
-        List<Word> pairedWords = wordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
+        List<Word> pairedWords = dictWordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
         // 任何前缀变化都会重新开始补全。
         result.restartCompletionOnAnyPrefixChange();
         if (pairedWords.isEmpty()) {

@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+## [0.9.5] - 2023-07-18
+
+### Added
+- 新增自定义字典路径配置
+
+### Changed
+- 重构代码
+
+
 ## [0.9.1] - 2023-07-17
 
 ### Added
@@ -11,3 +20,4 @@
 
 [Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.1...HEAD
 [0.9.1]: https://github.com/PonKing66/CCECDICT/commits/v0.9.1
+[0.9.5]: https://github.com/PonKing66/CCECDICT/commits/v0.9.5

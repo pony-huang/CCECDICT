@@ -16,6 +16,7 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
 
     private CodeCompletionSettingsComponent settingsComponent;
 
+
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
     public String getDisplayName() {
@@ -43,6 +44,10 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
         // paired word count
         int pairedWordCount = settingsComponent.getPairedWordCount();
         modified |= pairedWordCount != settings.getPairedWordCount();
+        // custom button
+        boolean isCustom = settingsComponent.isCustom();
+        modified |= isCustom != settings.isCustom();
+
         return modified;
     }
 
@@ -51,13 +56,15 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
         CodeCompletionSettings settings = CodeCompletionSettings.getInstance();
         settings.setSqliteDictPath(settingsComponent.getSqliteDictPath());
         settings.setPairedWordCount(settingsComponent.getPairedWordCount());
+        settings.setCustom(settingsComponent.isCustom());
     }
 
     @Override
     public void reset() {
         CodeCompletionSettings settings = CodeCompletionSettings.getInstance();
         settingsComponent.setSqliteDictPath(settings.getSqliteDictPath());
-        settingsComponent.setPairedWordCount(settings.getPairedWordCount());
+        settingsComponent.setPairedWordCount(20);
+        settingsComponent.setCustom(false);
     }
 
     @Override

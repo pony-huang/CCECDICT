@@ -1,7 +1,6 @@
 package org.github.ponking66.ccecdit.cache;
 
 import cn.hutool.cache.CacheListener;
-import cn.hutool.cache.impl.AbstractCache;
 import cn.hutool.cache.impl.CacheObj;
 import cn.hutool.cache.impl.LFUCache;
 import com.intellij.openapi.application.ApplicationManager;
@@ -9,7 +8,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.diagnostic.Logger;
-import org.github.ponking66.ccecdit.WordManagerServiceImpl;
+import org.github.ponking66.ccecdit.CustomDictWordSqliteManagerServiceImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +26,7 @@ import java.util.Iterator;
 )
 public class FrequencyWordCacheComponent implements PersistentStateComponent<FrequencyWordCacheState> {
 
-    private final Logger LOGGER = Logger.getInstance(WordManagerServiceImpl.class);
+    private final Logger LOGGER = Logger.getInstance(CustomDictWordSqliteManagerServiceImpl.class);
     private final FrequencyWordCacheState state = new FrequencyWordCacheState();
 
     private final LFUCache<String, Integer> CACHE = new LFUCache<>(500) {

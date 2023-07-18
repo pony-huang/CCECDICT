@@ -19,7 +19,8 @@ import org.jetbrains.annotations.Nullable;
 public class CodeCompletionSettings implements PersistentStateComponent<CodeCompletionSettings> {
     private int pairedWordCount = 20;
 
-    private String dictionarySqliteFilePath;
+    private boolean custom = false;
+    private String dictionarySqliteCustomPath;
 
     public static CodeCompletionSettings getInstance() {
         return ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
@@ -36,11 +37,11 @@ public class CodeCompletionSettings implements PersistentStateComponent<CodeComp
     }
 
     public String getSqliteDictPath() {
-        return dictionarySqliteFilePath;
+        return dictionarySqliteCustomPath;
     }
 
     public void setSqliteDictPath(String sqliteDictPath) {
-        this.dictionarySqliteFilePath = sqliteDictPath;
+        this.dictionarySqliteCustomPath = sqliteDictPath;
     }
 
 
@@ -51,4 +52,13 @@ public class CodeCompletionSettings implements PersistentStateComponent<CodeComp
     public void setPairedWordCount(int pairedWordCount) {
         this.pairedWordCount = pairedWordCount;
     }
+
+    public boolean isCustom() {
+        return custom;
+    }
+
+    public void setCustom(boolean custom) {
+        this.custom = custom;
+    }
+
 }

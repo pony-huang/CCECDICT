@@ -6,7 +6,7 @@ package org.github.ponking66.ccecdit;
  */
 public class Word {
 
-    public String id;
+    public int id;
     public String word;
     public String sw;
     public String phonetic;
@@ -21,7 +21,6 @@ public class Word {
     public String exchange;
     public String detail;
     public String audio;
-
     public int frequency;
 
     public Word() {
@@ -34,7 +33,7 @@ public class Word {
         this.exchange = exchange;
     }
 
-    public Word(String id, String word, String sw, String phonetic, String definition, String translation, String pos,
+    public Word(int id, String word, String sw, String phonetic, String definition, String translation, String pos,
                 int collins, int oxford, String tag, int bnc, int frq, String exchange, String detail, String audio) {
         this.id = id;
         this.word = word;
@@ -53,11 +52,11 @@ public class Word {
         this.audio = audio;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
