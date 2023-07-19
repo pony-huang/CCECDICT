@@ -37,15 +37,13 @@ Code completion plugin for English to Chinese Dictionary
 
 > ECDICT 单词库庞大，插件仅保存在[10000个最常见英语单词的列表](https://github.com/first20hours/google-10000-english)，另有需求请自行配置自定义数据库。
 
+<!-- Plugin description end -->
 
 配置自定义数据库
 
 1. [下载 ecdict-sqlite](https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip)，配置字典库路径。
 
-
 <img src="img.png"  style="text-align: center"  width="426"  alt="images"/>
-
-<!-- Plugin description end -->
 
 ## Installation
 
