@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>org.github.ponking66.ccecdit</id>
-    <name>英汉词典代码补全</name>
+    <name>English to Chinese Dictionary Code Completion</name>
     <vendor>ponking66</vendor>
     <depends>com.intellij.java</depends>
     <depends>com.intellij.modules.platform</depends>
