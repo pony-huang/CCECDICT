@@ -26,9 +26,9 @@ import java.util.stream.Collectors;
  * @author pony
  * @date 2023/7/13
  */
-public class DictionaryCompletionProvider extends CompletionProvider<CompletionParameters> {
+public class DictCompletionProvider extends CompletionProvider<CompletionParameters> {
 
-    private final Logger LOGGER = Logger.getInstance(DictionaryCompletionProvider.class);
+    private final Logger LOGGER = Logger.getInstance(DictCompletionProvider.class);
 
     private boolean noticed = false;
 
@@ -36,6 +36,7 @@ public class DictionaryCompletionProvider extends CompletionProvider<CompletionP
     protected void addCompletions(@NotNull CompletionParameters parameters,
                                   @NotNull ProcessingContext context,
                                   @NotNull CompletionResultSet result) {
+
         Project project = parameters.getOriginalFile().getProject();
         // 尚未设置字典路径
         CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);

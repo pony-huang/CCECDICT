@@ -1,0 +1,10 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+
+        <completion.contributor
+                language="Python"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.python.PythonDictCompletionContributor"/>
+
+    </extensions>
+</idea-plugin>

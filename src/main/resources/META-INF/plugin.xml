@@ -3,8 +3,12 @@
     <id>org.github.ponking66.ccecdit</id>
     <name>English to Chinese Dictionary Code Completion</name>
     <vendor>ponking66</vendor>
-    <depends>com.intellij.java</depends>
+
     <depends>com.intellij.modules.platform</depends>
+
+    <depends optional="true" config-file="lang-go.xml">org.jetbrains.plugins.go</depends>
+    <depends optional="true" config-file="lang-java.xml">com.intellij.java</depends>
+    <depends optional="true" config-file="lang-python.xml">com.intellij.modules.python</depends>
 
     <extensions defaultExtensionNs="com.intellij">
 
@@ -18,15 +22,7 @@
         <applicationService
                 serviceImplementation="org.github.ponking66.ccecdit.cache.FrequencyWordCacheComponent"/>
 
-        <completion.contributor
-                language="JAVA"
-                order="first"
-                implementationClass="org.github.ponking66.ccecdit.completion.DictionaryCompletionContributor"/>
-
-        <notificationGroup id="CCECDICT Notification"
-                           key="plugin.ccecdit.notification"
-                           icon="/META-INF/dictionaryIcon.svg"
-                           displayType="STICKY_BALLOON"/>
+        <notificationGroup id="CCECDICT Notification" displayType="STICKY_BALLOON"/>
 
         <applicationConfigurable
                 parentId="tools"
