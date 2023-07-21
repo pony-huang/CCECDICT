@@ -33,11 +33,11 @@ Code completion plugin for English to Chinese Dictionary
 
 中英字典的双解词典代码提示插件
 
-<img src="example.gif"  style="text-align: center"  width="426"  alt="images"/>
-
-> ECDICT 单词库庞大，插件仅保存在[10000个最常见英语单词的列表](https://github.com/first20hours/google-10000-english)，另有需求请自行配置自定义数据库。
+> ECDICT 单词库庞大，插件仅保存在[10000个最常见英语单词的列表](https://github.com/first20hours/google-10000-english)，另有需求请自行配置[自定义数据库](https://github.com/PonKing66/CCECDICT)。
 
 <!-- Plugin description end -->
+
+<img src="example.gif"  style="text-align: center"  width="426"  alt="images"/>
 
 配置自定义数据库
 

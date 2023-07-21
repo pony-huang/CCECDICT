@@ -4,6 +4,14 @@
 
 ## [Unreleased]
 
+## [0.9.6] - 2023-07-19
+
+### Added
+- 支持 golang, Pycharm
+
+### Changed
+- Update README.md
+
 ## [0.9.5] - 2023-07-18
 
 ### Added
@@ -20,3 +28,4 @@
 [Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.1...HEAD
 [0.9.1]: https://github.com/PonKing66/CCECDICT/commits/v0.9.1
 [0.9.5]: https://github.com/PonKing66/CCECDICT/commits/v0.9.5
+[0.9.6]: https://github.com/PonKing66/CCECDICT/commits/v0.9.6
