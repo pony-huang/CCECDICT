@@ -18,7 +18,6 @@ import org.jetbrains.annotations.Nullable;
 )
 public class CodeCompletionSettings implements PersistentStateComponent<CodeCompletionSettings> {
     private int pairedWordCount = 20;
-
     private boolean custom = false;
     private String dictionarySqliteCustomPath;
 

@@ -4,14 +4,13 @@ import com.intellij.codeInsight.completion.*;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.codeInsight.lookup.LookupElementBuilder;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.util.ProcessingContext;
+import org.github.ponking66.ccecdit.DictWordManagerService;
 import org.github.ponking66.ccecdit.DictionaryIcons;
 import org.github.ponking66.ccecdit.Word;
-import org.github.ponking66.ccecdit.DictWordManagerService;
 import org.github.ponking66.ccecdit.cache.FrequencyWordCacheComponent;
 import org.github.ponking66.ccecdit.settings.CodeCompletionSettings;
 import org.github.ponking66.ccecdit.util.NotificationUtil;
@@ -28,19 +27,16 @@ import java.util.stream.Collectors;
  */
 public class DictCompletionProvider extends CompletionProvider<CompletionParameters> {
 
-    private final Logger LOGGER = Logger.getInstance(DictCompletionProvider.class);
-
     private boolean noticed = false;
 
     @Override
     protected void addCompletions(@NotNull CompletionParameters parameters,
                                   @NotNull ProcessingContext context,
                                   @NotNull CompletionResultSet result) {
-
         Project project = parameters.getOriginalFile().getProject();
         // 尚未设置字典路径
         CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
-        if (StringUtil.isEmpty(settings.getSqliteDictPath())) {
+        if (settings.isCustom() && StringUtil.isEmpty(settings.getSqliteDictPath())) {
             // 每次启动仅提示一次配置错误信息
             if (!noticed) {
                 NotificationUtil.notifyWarning(project, "尚未设置字典路径");
@@ -61,21 +57,23 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
         if (StringUtil.isEmpty(prefix)) {
             return;
         }
+
         FrequencyWordCacheComponent frequencyWordCacheComponent = FrequencyWordCacheComponent.getInstance();
         DictWordManagerService dictWordManagerService = ApplicationManager.getApplication().getService(DictWordManagerService.class);
         Map<String, Integer> cache = Objects.requireNonNull(frequencyWordCacheComponent.getState()).getCache();
         Set<String> keys = cache.keySet();
-        List<Word> pairedWords = dictWordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
+        List<Word> paired = dictWordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
+
+
         // 任何前缀变化都会重新开始补全。
         result.restartCompletionOnAnyPrefixChange();
-        if (pairedWords.isEmpty()) {
+        if (paired.isEmpty()) {
             result.restartCompletionOnAnyPrefixChange();
             return;
         }
 
         final String prefixCopy = prefix;
-
-        List<LookupElement> lookupElements = pairedWords.stream().peek(item -> {
+        List<LookupElement> lookupElements = paired.stream().peek(item -> {
                     Integer count = cache.get(item.getWord());
                     if (count != null) {
                         item.setFrequency(count);
@@ -86,7 +84,7 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
 
         CompletionResultSet resultSet = result.withPrefixMatcher(new WordPrefixMatcher(prefix));
         resultSet.addAllElements(lookupElements);
-        resultSet.addLookupAdvertisement("匹配词数" + pairedWords.size());
+        resultSet.addLookupAdvertisement("匹配词数" + paired.size());
     }
 
     @NotNull

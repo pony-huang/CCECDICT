@@ -26,11 +26,14 @@ public class CodeCompletionSettingsComponent {
     private final JBCheckBox isUseCustomDictPath = new JBCheckBox("自定义 :");
     private final IntegerField pairedWordCountTextField = new IntegerField("Maximum number of pairings", 10, 50);
 
-
     public CodeCompletionSettingsComponent() {
         ecdictSqlitePath.addBrowseFolderListener(new TextBrowseFolderListener(FileChooserDescriptorFactory.createSingleFileDescriptor()));
         CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
+
         ecdictSqlitePath.setEditable(settings.isCustom());
+        isUseCustomDictPath.setSelected(settings.isCustom());
+        pairedWordCountTextField.setValue(settings.getPairedWordCount());
+
         panel = FormBuilder.createFormBuilder()
                 .addLabeledComponent(isUseCustomDictPath, ecdictSqlitePath, 1, false)
                 .addLabeledComponent(new JBLabel(Constant.SETTING_ATTRIBUTE_MAXIMUM_NUMBER_OF_PAIRINGS_NAME), pairedWordCountTextField, 1, false)
