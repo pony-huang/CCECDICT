@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [0.9.7] - 2023-07-23
+
+### Fixed
+- 修复自定义配置失效
+
 ## [0.9.6] - 2023-07-19
 
 ### Added
@@ -29,3 +34,4 @@
 [0.9.1]: https://github.com/PonKing66/CCECDICT/commits/v0.9.1
 [0.9.5]: https://github.com/PonKing66/CCECDICT/commits/v0.9.5
 [0.9.6]: https://github.com/PonKing66/CCECDICT/commits/v0.9.6
+[0.9.7]: https://github.com/PonKing66/CCECDICT/commits/v0.9.7
