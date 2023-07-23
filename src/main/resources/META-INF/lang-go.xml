@@ -1,0 +1,8 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor
+                language="go"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.go.GoDictCompletionContributor"/>
+    </extensions>
+</idea-plugin>

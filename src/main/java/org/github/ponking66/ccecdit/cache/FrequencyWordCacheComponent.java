@@ -8,7 +8,6 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.diagnostic.Logger;
-import org.github.ponking66.ccecdit.CustomDictWordSqliteManagerServiceImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -26,7 +25,7 @@ import java.util.Iterator;
 )
 public class FrequencyWordCacheComponent implements PersistentStateComponent<FrequencyWordCacheState> {
 
-    private final Logger LOGGER = Logger.getInstance(CustomDictWordSqliteManagerServiceImpl.class);
+    private final Logger LOGGER = Logger.getInstance(FrequencyWordCacheComponent.class);
     private final FrequencyWordCacheState state = new FrequencyWordCacheState();
 
     private final LFUCache<String, Integer> CACHE = new LFUCache<>(500) {
