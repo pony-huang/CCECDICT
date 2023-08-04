@@ -32,14 +32,21 @@
 
 Code completion plugin for English to Chinese Dictionary based IntelliJ  IDEA.
 
-[Github](https://github.com/PonKing66/CCECDICT)
+It is an intelligent code completion plugin that provides smart Chinese-English translation code completion functionality while writing code, correcting word spelling errors.
+
+More tutorial please visit： [here.](https://github.com/PonKing66/CCECDICT)
+
+## Introduction
+
+- Support for Pycharm, Golang and Intellij Idea.
+- Configure plugin. <kbd>Settings/Preferences</kbd> > <kbd>Tools</kbd> > <kbd>EEECDICT</kbd>
+- The ECDICT word database is extensive, but the plugin only retains a list of the [10,000 most common English words](https://github.com/first20hours/google-10000-english). More tutorial please visit： [here.](https://github.com/PonKing66/CCECDICT)
 
 <!-- Plugin description end -->
 
 中英字典的双解词典代码提示插件
 
 > ECDICT 单词库庞大，插件仅保存在[10000个最常见英语单词的列表](https://github.com/first20hours/google-10000-english)，另有需求请自行配置[自定义数据库](https://github.com/PonKing66/CCECDICT)。
-
 
 <img src="example.gif"  style="text-align: center"  width="426"  alt="images"/>
 
