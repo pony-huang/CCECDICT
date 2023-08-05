@@ -19,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 public class CodeCompletionSettings implements PersistentStateComponent<CodeCompletionSettings> {
     private int pairedWordCount = 20;
     private boolean custom = false;
+    private boolean priorityLatelyShow = false;
     private String dictionarySqliteCustomPath;
 
     public static CodeCompletionSettings getInstance() {
@@ -60,4 +61,11 @@ public class CodeCompletionSettings implements PersistentStateComponent<CodeComp
         this.custom = custom;
     }
 
+    public boolean isPriorityLatelyShow() {
+        return priorityLatelyShow;
+    }
+
+    public void setPriorityLatelyShow(boolean priorityLatelyShow) {
+        this.priorityLatelyShow = priorityLatelyShow;
+    }
 }

@@ -2,7 +2,6 @@
 
 package org.github.ponking66.ccecdit.settings;
 
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
@@ -23,20 +22,24 @@ public class CodeCompletionSettingsComponent {
 
     private final JPanel panel;
     private final TextFieldWithBrowseButton ecdictSqlitePath = new TextFieldWithBrowseButton();
-    private final JBCheckBox isUseCustomDictPath = new JBCheckBox("自定义 :");
+    private final JBCheckBox isUseCustomDictPath = new JBCheckBox(Constant.SETTING_ATTRIBUTE_SQLITE_HOME_PATH_NAME);
     private final IntegerField pairedWordCountTextField = new IntegerField("Maximum number of pairings", 10, 50);
+    private final JBCheckBox isPriorityLatelyShow = new JBCheckBox(Constant.SETTING_ATTRIBUTE_IS_PRIORITY_LATELY_SHOW);
 
-    public CodeCompletionSettingsComponent() {
-        ecdictSqlitePath.addBrowseFolderListener(new TextBrowseFolderListener(FileChooserDescriptorFactory.createSingleFileDescriptor()));
-        CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
+    public CodeCompletionSettingsComponent(CodeCompletionSettings settings) {
 
-        ecdictSqlitePath.setEditable(settings.isCustom());
-        isUseCustomDictPath.setSelected(settings.isCustom());
-        pairedWordCountTextField.setValue(settings.getPairedWordCount());
 
-        panel = FormBuilder.createFormBuilder()
+        this.isUseCustomDictPath.setSelected(settings.isCustom());
+        this.isPriorityLatelyShow.setSelected(settings.isPriorityLatelyShow());
+        this.pairedWordCountTextField.setValue(settings.getPairedWordCount());
+
+        this.ecdictSqlitePath.setEditable(settings.isCustom());
+        this.ecdictSqlitePath.addBrowseFolderListener(new TextBrowseFolderListener(FileChooserDescriptorFactory.createSingleFileDescriptor()));
+
+        this.panel = FormBuilder.createFormBuilder()
                 .addLabeledComponent(isUseCustomDictPath, ecdictSqlitePath, 1, false)
                 .addLabeledComponent(new JBLabel(Constant.SETTING_ATTRIBUTE_MAXIMUM_NUMBER_OF_PAIRINGS_NAME), pairedWordCountTextField, 1, false)
+                .addComponent(isPriorityLatelyShow, 1)
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
     }
@@ -75,5 +78,14 @@ public class CodeCompletionSettingsComponent {
     public void setCustom(boolean custom) {
         this.isUseCustomDictPath.setSelected(custom);
     }
+
+    public boolean isPriorityLatelyShow() {
+        return this.isPriorityLatelyShow.isSelected();
+    }
+
+    public void setPriorityLatelyShow(boolean priorityLatelyShow) {
+        this.isPriorityLatelyShow.setSelected(priorityLatelyShow);
+    }
+
 
 }

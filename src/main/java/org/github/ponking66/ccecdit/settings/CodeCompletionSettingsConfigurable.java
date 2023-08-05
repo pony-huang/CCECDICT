@@ -16,6 +16,7 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
 
     private CodeCompletionSettingsComponent settingsComponent;
 
+    private final CodeCompletionSettings settings = CodeCompletionSettings.getInstance();
 
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
@@ -31,23 +32,35 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        settingsComponent = new CodeCompletionSettingsComponent();
+        settingsComponent = new CodeCompletionSettingsComponent(settings);
         return settingsComponent.getPanel();
     }
 
     @Override
     public boolean isModified() {
-        CodeCompletionSettings settings = CodeCompletionSettings.getInstance();
+        boolean modified = false;
         // path
         String currentSqliteDictPath = settingsComponent.getSqliteDictPath();
-        boolean modified = !currentSqliteDictPath.equals(settings.getSqliteDictPath());
+        if (currentSqliteDictPath.length() > 0) {
+            modified = !currentSqliteDictPath.equals(settings.getSqliteDictPath());
+            settings.setSqliteDictPath(currentSqliteDictPath);
+        }
+
         // paired word count
         int pairedWordCount = settingsComponent.getPairedWordCount();
         modified |= pairedWordCount != settings.getPairedWordCount();
-        // custom button
-        boolean isCustom = settingsComponent.isCustom();
-        modified |= isCustom != settings.isCustom();
 
+        // isCustom button
+        modified = isModified(modified, settingsComponent.isCustom(), settings.isCustom());
+        // isPriority button
+        modified = isModified(modified, settingsComponent.isPriorityLatelyShow(), settings.isPriorityLatelyShow());
+
+        return modified;
+    }
+
+
+    private boolean isModified(boolean modified, boolean current, boolean old) {
+        modified |= current != old;
         return modified;
     }
 
@@ -57,14 +70,15 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
         settings.setSqliteDictPath(settingsComponent.getSqliteDictPath());
         settings.setPairedWordCount(settingsComponent.getPairedWordCount());
         settings.setCustom(settingsComponent.isCustom());
+        settings.setPriorityLatelyShow(settingsComponent.isPriorityLatelyShow());
     }
 
     @Override
     public void reset() {
-        CodeCompletionSettings settings = CodeCompletionSettings.getInstance();
         settingsComponent.setSqliteDictPath(settings.getSqliteDictPath());
-        settingsComponent.setPairedWordCount(20);
-        settingsComponent.setCustom(false);
+        settingsComponent.setPairedWordCount(settings.getPairedWordCount());
+        settingsComponent.setCustom(settings.isCustom());
+        settingsComponent.setPriorityLatelyShow(settings.isPriorityLatelyShow());
     }
 
     @Override

@@ -18,6 +18,7 @@ import org.github.ponking66.ccecdit.util.WordUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
  */
 public class DictCompletionProvider extends CompletionProvider<CompletionParameters> {
 
-    private boolean noticed = false;
+    private static final AtomicBoolean noticed = new AtomicBoolean(false);
 
     @Override
     protected void addCompletions(@NotNull CompletionParameters parameters,
@@ -38,9 +39,9 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
         CodeCompletionSettings settings = ApplicationManager.getApplication().getService(CodeCompletionSettings.class);
         if (settings.isCustom() && StringUtil.isEmpty(settings.getSqliteDictPath())) {
             // 每次启动仅提示一次配置错误信息
-            if (!noticed) {
+            if (!noticed.get()) {
                 NotificationUtil.notifyWarning(project, "尚未设置字典路径");
-                noticed = !noticed;
+                noticed.set(!noticed.get());
             }
             return;
         }
@@ -60,10 +61,16 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
 
         FrequencyWordCacheComponent frequencyWordCacheComponent = FrequencyWordCacheComponent.getInstance();
         DictWordManagerService dictWordManagerService = ApplicationManager.getApplication().getService(DictWordManagerService.class);
-        Map<String, Integer> cache = Objects.requireNonNull(frequencyWordCacheComponent.getState()).getCache();
-        Set<String> keys = cache.keySet();
-        List<Word> paired = dictWordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
-
+        List<Word> paired = null;
+        boolean priorityLatelyShow = settings.isPriorityLatelyShow();
+        Map<String, Integer> cache = null;
+        if (priorityLatelyShow) {
+            cache = Objects.requireNonNull(frequencyWordCacheComponent.getState()).getCache();
+            Set<String> keys = cache.keySet();
+            paired = dictWordManagerService.searchWords(prefix, new ArrayList<>(keys), settings.getPairedWordCount());
+        } else {
+            paired = dictWordManagerService.searchWords(prefix, settings.getPairedWordCount());
+        }
 
         // 任何前缀变化都会重新开始补全。
         result.restartCompletionOnAnyPrefixChange();
@@ -72,15 +79,27 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
             return;
         }
 
-        final String prefixCopy = prefix;
-        List<LookupElement> lookupElements = paired.stream().peek(item -> {
-                    Integer count = cache.get(item.getWord());
-                    if (count != null) {
-                        item.setFrequency(count);
-                    }
-                })
-                .map(item -> PrioritizedLookupElement.withPriority(buildLookupElementBuilder(frequencyWordCacheComponent).apply(item), item.word.equals(prefixCopy) ? Double.MAX_VALUE : item.frequency * 1.0))
-                .collect(Collectors.toList());
+        buildLookUpElement(result, prefix, frequencyWordCacheComponent, paired, cache, priorityLatelyShow);
+    }
+
+    private void buildLookUpElement(@NotNull CompletionResultSet result, String prefix, FrequencyWordCacheComponent frequencyWordCacheComponent,
+                                    List<Word> paired, Map<String, Integer> cache, boolean isSetFrequency) {
+
+        List<LookupElement> lookupElements = null;
+        if (isSetFrequency && cache != null) {
+            lookupElements = paired.stream().peek(item -> {
+                        Integer count = cache.get(item.getWord());
+                        if (count != null) {
+                            item.setFrequency(count);
+                        }
+                    })
+                    .map(item -> PrioritizedLookupElement.withPriority(buildLookupElementBuilder(frequencyWordCacheComponent).apply(item), item.word.equals(prefix) ? Double.MAX_VALUE : item.frequency * 1.0))
+                    .collect(Collectors.toList());
+        } else {
+            lookupElements = paired.stream()
+                    .map(item -> PrioritizedLookupElement.withPriority(buildLookupElementBuilder(frequencyWordCacheComponent).apply(item), item.word.equals(prefix) ? Double.MAX_VALUE : item.frequency * 1.0))
+                    .collect(Collectors.toList());
+        }
 
         CompletionResultSet resultSet = result.withPrefixMatcher(new WordPrefixMatcher(prefix));
         resultSet.addAllElements(lookupElements);
