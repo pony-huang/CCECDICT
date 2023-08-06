@@ -63,7 +63,11 @@ public class WordUtil {
      */
     public static String findLastWord(String sub, boolean underline) {
         int lastWordStartIndex = findLastWordStartIndex(sub, underline);
-        return sub.substring(lastWordStartIndex);
+        if (lastWordStartIndex != -1) {
+            return sub.substring(lastWordStartIndex);
+        }
+        return "";
+
     }
 
 }

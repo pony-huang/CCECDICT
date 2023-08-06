@@ -61,7 +61,7 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
 
         FrequencyWordCacheComponent frequencyWordCacheComponent = FrequencyWordCacheComponent.getInstance();
         DictWordManagerService dictWordManagerService = ApplicationManager.getApplication().getService(DictWordManagerService.class);
-        List<Word> paired = null;
+        List<Word> paired;
         boolean priorityLatelyShow = settings.isPriorityLatelyShow();
         Map<String, Integer> cache = null;
         if (priorityLatelyShow) {
@@ -72,20 +72,19 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
             paired = dictWordManagerService.searchWords(prefix, settings.getPairedWordCount());
         }
 
-        // 任何前缀变化都会重新开始补全。
-        result.restartCompletionOnAnyPrefixChange();
         if (paired.isEmpty()) {
-            result.restartCompletionOnAnyPrefixChange();
             return;
         }
 
+        // 任何前缀变化都会重新开始补全。
+        result.restartCompletionOnAnyPrefixChange();
         buildLookUpElement(result, prefix, frequencyWordCacheComponent, paired, cache, priorityLatelyShow);
     }
 
     private void buildLookUpElement(@NotNull CompletionResultSet result, String prefix, FrequencyWordCacheComponent frequencyWordCacheComponent,
                                     List<Word> paired, Map<String, Integer> cache, boolean isSetFrequency) {
 
-        List<LookupElement> lookupElements = null;
+        List<LookupElement> lookupElements;
         if (isSetFrequency && cache != null) {
             lookupElements = paired.stream().peek(item -> {
                         Integer count = cache.get(item.getWord());
@@ -117,8 +116,8 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
                     .withTailText(word.translation == null ? null : word.translation.trim())
                     .withIcon(DictionaryIcons.DICTIONARY)
                     .withBoldness(false)
-
                     .bold()
+
                     .withInsertHandler((ctx, item) -> {
 
                         String insertText = item.getLookupString();
