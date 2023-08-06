@@ -1,10 +1,7 @@
 
 package org.github.ponking66.ccecdit.completion.go;
 
-import com.goide.psi.GoFile;
-import com.goide.psi.GoFunctionOrMethodDeclaration;
-import com.goide.psi.GoParamDefinition;
-import com.goide.psi.GoVarOrConstDefinition;
+import com.goide.psi.*;
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
 import com.intellij.codeInsight.completion.CompletionProvider;
@@ -22,8 +19,20 @@ public class GoDictCompletionContributor extends CompletionContributor implement
         CompletionProvider<CompletionParameters> provider = new DictCompletionProvider();
 //        extend(CompletionType.BASIC, inGoFile(), provider);
         extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoVarOrConstDefinition.class)), provider);
-        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoFunctionOrMethodDeclaration.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoVarOrConstDeclaration.class)), provider);
+
         extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoParamDefinition.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoParameterDeclaration.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoParameters.class)), provider);
+
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoLabelDefinition.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoTypeDeclaration.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoTypeParameterDeclaration.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoTypeParamDefinition.class)), provider);
+
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoFieldDeclaration.class)), provider);
+        extend(CompletionType.BASIC, inGoFile().withParent(psiElement(GoFieldDefinition.class)), provider);
+
     }
 
     private static PsiElementPattern.Capture<PsiElement> inGoFile() {
