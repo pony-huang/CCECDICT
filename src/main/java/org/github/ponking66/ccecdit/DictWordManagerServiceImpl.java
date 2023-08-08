@@ -45,4 +45,9 @@ public class DictWordManagerServiceImpl implements DictWordManagerService {
         }
     }
 
+    public void reset() {
+        customManagerService.reset();
+        defaultManagerService.reset();
+    }
+
 }

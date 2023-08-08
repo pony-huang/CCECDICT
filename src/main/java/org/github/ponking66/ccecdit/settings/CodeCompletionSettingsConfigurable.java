@@ -2,7 +2,10 @@
 
 package org.github.ponking66.ccecdit.settings;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.options.Configurable;
+import org.github.ponking66.ccecdit.DictWordManagerService;
+import org.github.ponking66.ccecdit.DictWordManagerServiceImpl;
 import org.github.ponking66.ccecdit.util.Constant;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
@@ -43,6 +46,12 @@ public class CodeCompletionSettingsConfigurable implements Configurable {
         String currentSqliteDictPath = settingsComponent.getSqliteDictPath();
         if (currentSqliteDictPath.length() > 0) {
             modified = !currentSqliteDictPath.equals(settings.getSqliteDictPath());
+
+            if (modified) {
+                DictWordManagerServiceImpl service = (DictWordManagerServiceImpl) ApplicationManager.getApplication().getService(DictWordManagerService.class);
+                service.reset();
+            }
+
             settings.setSqliteDictPath(currentSqliteDictPath);
         }
 
