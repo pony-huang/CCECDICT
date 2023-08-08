@@ -48,6 +48,10 @@ public class DictCompletionProvider extends CompletionProvider<CompletionParamet
         // 用户输入的前缀
         PrefixMatcher prefixMatcher = result.getPrefixMatcher();
         String prefix = prefixMatcher.getPrefix();
+        // 判断是否存在非法字符, 如 ',.!
+        if (!WordUtil.illegalCharacter(prefix)) {
+            return;
+        }
         // 如果用户输入的前缀是复合单词，获取最后一个单词并转换为小写。
         if (WordUtil.isCompositeNameByUnderline(prefix)) {
             prefix = WordUtil.findLastWord(prefix, true).toLowerCase(Locale.ROOT);

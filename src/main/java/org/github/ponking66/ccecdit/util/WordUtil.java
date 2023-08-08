@@ -9,18 +9,16 @@ public class WordUtil {
     private WordUtil() {
     }
 
-
-    public static boolean isUpperCase(String word) {
-        for (char alpha : word.toCharArray()) {
-            if (!Character.isUpperCase(alpha)) {
+    public static boolean illegalCharacter(String sub) {
+        char[] characters = sub.toCharArray();
+        for (char character : characters) {
+            if (!((character >= 'A' && character <= 'Z') ||
+                    (character >= 'a' && character <= 'z') ||
+                    character == '_' || character == '-')) {
                 return false;
             }
         }
         return true;
-    }
-
-    public static boolean isCompositeName(String sub) {
-        return isCompositeNameByUnderline(sub) || isCompositeNameByOneAlphaUpperCase(sub);
     }
 
     public static boolean isCompositeNameByOneAlphaUpperCase(String sub) {
