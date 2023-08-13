@@ -2,8 +2,8 @@
 
 
 ![Build](https://github.com/PonKing66/CCECDICT/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/22313.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/22313.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/22313.svg)](https://plugins.jetbrains.com/plugin/22313)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/22313.svg)](https://plugins.jetbrains.com/plugin/22313)
 
 <!-- Plugin description -->
 
@@ -20,28 +20,28 @@ More tutorial please visit： [here.](https://github.com/PonKing66/CCECDICT)
 - The ECDICT word database is extensive, but the plugin only retains a list of the [10,000 most common English words](https://github.com/first20hours/google-10000-english). More tutorial please visit： [here.](https://github.com/PonKing66/CCECDICT)
 
 <!-- Plugin description end -->
-[//]: # (## Installation)
+## Installation
 
-[//]: # ()
-[//]: # (- Using IDE built-in plugin system:)
 
-[//]: # ()
-[//]: # (  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EEECDICT"</kbd> >)
+- Using IDE built-in plugin system:
 
-[//]: # ()
-[//]: # (  <kbd>Install Plugin</kbd>)
 
-[//]: # ()
-[//]: # (- Manually:)
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "EEECDICT"</kbd> >
 
-[//]: # ()
-[//]: # (  Download the [latest release]&#40;https://github.com/PonKing66/dictionary-completion/releases/latest&#41; and install it manually using)
 
-[//]: # ()
-[//]: # (  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>)
+  <kbd>Install Plugin</kbd>
 
-[//]: # ()
-[//]: # (---)
+
+- Manually:
+
+
+  Download the [latest release](https://github.com/PonKing66/dictionary-completion/releases/latest) and install it manually using
+
+
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
+
+
+---
 
 中英字典的双解词典代码提示插件
 
