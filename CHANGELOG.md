@@ -2,7 +2,10 @@
 
 # CCECDICT Changelog
 
-## [Unreleased]
+## [0.9.9.1] - 2023-09-06
+
+### Added
+- 新增kotlin语言支持
 
 ## [0.9.7] - 2023-07-23
 

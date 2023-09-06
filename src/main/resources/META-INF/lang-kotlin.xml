@@ -1,0 +1,10 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+
+        <completion.contributor
+                language="kotlin"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.kotlin.KotlinDictCompletionContributor"/>
+
+    </extensions>
+</idea-plugin>
