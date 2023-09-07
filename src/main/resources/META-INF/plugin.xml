@@ -8,6 +8,7 @@
 
     <depends optional="true" config-file="lang-go.xml">org.jetbrains.plugins.go</depends>
     <depends optional="true" config-file="lang-java.xml">com.intellij.java</depends>
+    <depends optional="true" config-file="lang-kotlin.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="lang-python.xml">com.intellij.modules.python</depends>
 
     <extensions defaultExtensionNs="com.intellij">
