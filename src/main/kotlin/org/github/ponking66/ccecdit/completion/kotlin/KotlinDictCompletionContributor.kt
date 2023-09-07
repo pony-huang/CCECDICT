@@ -4,9 +4,10 @@ import com.intellij.codeInsight.completion.CompletionContributor
 import com.intellij.codeInsight.completion.CompletionType
 import com.intellij.openapi.project.DumbAware
 import com.intellij.patterns.PlatformPatterns
+import com.intellij.patterns.PsiElementPattern
+import com.intellij.psi.PsiElement
 import org.github.ponking66.ccecdit.completion.DictCompletionProvider
 import org.jetbrains.kotlin.psi.KtFile
-import org.jetbrains.kotlin.psi.KtNameReferenceExpression
 
 class KotlinDictCompletionContributor : CompletionContributor(), DumbAware {
 
@@ -14,15 +15,23 @@ class KotlinDictCompletionContributor : CompletionContributor(), DumbAware {
         val provider = object : DictCompletionProvider() {}
         extend(
             CompletionType.BASIC,
-            PlatformPatterns.psiElement(KtFile::class.java).withParent(KtNameReferenceExpression::class.java),
+            inKtFile(),
             provider
         )
         extend(
             CompletionType.SMART,
-            PlatformPatterns.psiElement(KtFile::class.java).withParent(KtNameReferenceExpression::class.java),
+            inKtFile(),
             provider
         )
 
+    }
+
+    private fun inKtFile(): PsiElementPattern.Capture<PsiElement?> {
+        return PlatformPatterns.psiElement().inFile(
+            PlatformPatterns.psiElement(
+                KtFile::class.java
+            )
+        )
     }
 
 }

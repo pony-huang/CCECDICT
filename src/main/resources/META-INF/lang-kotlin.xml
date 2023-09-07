@@ -3,7 +3,7 @@
 
         <completion.contributor
                 language="kotlin"
-                order="first"
+                order="last"
                 implementationClass="org.github.ponking66.ccecdit.completion.kotlin.KotlinDictCompletionContributor"/>
 
     </extensions>
