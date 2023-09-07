@@ -51,7 +51,7 @@ More tutorial please visit： [here.](https://github.com/PonKing66/CCECDICT)
 
 配置自定义数据库，[下载 ecdict-sqlite](https://github.com/skywind3000/ECDICT/releases/download/1.0.28/ecdict-sqlite-28.zip)，配置字典库路径。
 
-<img src="img.jpg"  style="text-align: center"  width="1000"  alt="images"/>
+<img src="img.jpg"  style="text-align: center"  width="458"  height="524.5" alt="images"/>
 
 Plugin based on the [IntelliJ Platform Plugin Template][template].
 
