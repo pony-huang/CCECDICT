@@ -49,7 +49,8 @@
 
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.10...HEAD
+[Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.17...HEAD
+[0.9.17]: https://github.com/PonKing66/CCECDICT/commits/v0.9.17
 [0.9.10]: https://github.com/PonKing66/CCECDICT/commits/v0.9.10
 [0.9.7]: https://github.com/PonKing66/CCECDICT/commits/v0.9.7
 [0.9.6]: https://github.com/PonKing66/CCECDICT/commits/v0.9.6
