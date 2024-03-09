@@ -5,6 +5,7 @@
     <vendor>ponking66</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.yaml</depends>
 
     <depends optional="true" config-file="lang-go.xml">org.jetbrains.plugins.go</depends>
     <depends optional="true" config-file="lang-java.xml">com.intellij.java</depends>
@@ -32,5 +33,11 @@
                 id="org.github.ponking66.ccecdit.settings.CodeCompletionSettingsConfigurable"
                 displayName="CCECDICT"/>
 
+        <completion.contributor
+                language="yaml"
+                implementationClass="org.github.ponking66.ccecdit.completion.yaml.YamlDictCompletionContributor"/>
+
     </extensions>
+
+
 </idea-plugin>
