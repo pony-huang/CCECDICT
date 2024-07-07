@@ -4,11 +4,11 @@
 
 ## [Unreleased]
 
-## [0.9.10] - 2024-01-01
+## [0.9.17] - 2024-07-07
 
 ### Featured
 
-- 支持JetBrains 2023.3.+
+- 支持JetBrains 2024.1.+
 
 ## [0.9.10] - 2023-09-06
 
@@ -50,6 +50,7 @@
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
 [Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.17...HEAD
+[0.9.18]: https://github.com/PonKing66/CCECDICT/commits/v0.9.18
 [0.9.17]: https://github.com/PonKing66/CCECDICT/commits/v0.9.17
 [0.9.10]: https://github.com/PonKing66/CCECDICT/commits/v0.9.10
 [0.9.7]: https://github.com/PonKing66/CCECDICT/commits/v0.9.7
