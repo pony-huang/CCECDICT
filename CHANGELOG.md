@@ -1,14 +1,15 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
 # CCECDICT Changelog
+
 ## [Unreleased]
+
 ## [0.9.20] - 2025-06-02
 
 ### Changed
 
 - 支持JetBrains 2025.2.+
 
-## [Unreleased]
 ## [0.9.19] - 2024-12-11
 
 ### Changed
@@ -64,7 +65,7 @@
 
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
 
-[Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.18...HEAD
+[Unreleased]: https://github.com/PonKing66/CCECDICT/compare/v0.9.20...HEAD
 [0.9.20]: https://github.com/PonKing66/CCECDICT/commits/v0.9.20
 [0.9.19]: https://github.com/PonKing66/CCECDICT/commits/v0.9.19
 [0.9.18]: https://github.com/PonKing66/CCECDICT/commits/v0.9.18
