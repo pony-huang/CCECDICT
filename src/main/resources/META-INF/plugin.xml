@@ -9,8 +9,11 @@
 
     <depends optional="true" config-file="lang-go.xml">org.jetbrains.plugins.go</depends>
     <depends optional="true" config-file="lang-java.xml">com.intellij.java</depends>
+    <depends optional="true" config-file="lang-json.xml">com.intellij.modules.json</depends>
     <depends optional="true" config-file="lang-kotlin.xml">org.jetbrains.kotlin</depends>
     <depends optional="true" config-file="lang-python.xml">com.intellij.modules.python</depends>
+    <depends optional="true" config-file="lang-rust.xml">com.jetbrains.rust</depends>
+    <depends optional="true" config-file="lang-csharp.xml">com.intellij.modules.rider</depends>
 
     <extensions defaultExtensionNs="com.intellij">
 
@@ -35,7 +38,11 @@
 
         <completion.contributor
                 language="yaml"
-                implementationClass="org.github.ponking66.ccecdit.completion.yaml.YamlDictCompletionContributor"/>
+                implementationClass="org.github.ponking66.ccecdit.completion.YamlDictCompletionContributor"/>
+
+        <completion.contributor
+                language="json"
+                implementationClass="org.github.ponking66.ccecdit.completion.JsonDictCompletionContributor"/>
 
     </extensions>
 

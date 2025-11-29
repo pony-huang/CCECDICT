@@ -1,0 +1,8 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.jetbrains.rust">
+        <completion.contributor
+                language="rust"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.RustDictCompletionContributor"/>
+    </extensions>
+</idea-plugin>

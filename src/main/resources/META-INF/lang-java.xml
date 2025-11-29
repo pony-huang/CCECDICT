@@ -4,7 +4,7 @@
         <completion.contributor
                 language="JAVA"
                 order="first"
-                implementationClass="org.github.ponking66.ccecdit.completion.java.JavaDictCompletionContributor"/>
+                implementationClass="org.github.ponking66.ccecdit.completion.JavaDictCompletionContributor"/>
 
     </extensions>
 </idea-plugin>

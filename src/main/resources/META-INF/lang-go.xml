@@ -3,6 +3,6 @@
         <completion.contributor
                 language="go"
                 order="first"
-                implementationClass="org.github.ponking66.ccecdit.completion.go.GoDictCompletionContributor"/>
+                implementationClass="org.github.ponking66.ccecdit.completion.GoDictCompletionContributor"/>
     </extensions>
 </idea-plugin>

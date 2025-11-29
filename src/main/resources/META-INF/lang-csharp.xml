@@ -1,0 +1,10 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+
+        <completion.contributor
+                language="C#"
+                order="first"
+                implementationClass="org.github.ponking66.ccecdit.completion.CSharpDictCompletionContributor"/>
+
+    </extensions>
+</idea-plugin>

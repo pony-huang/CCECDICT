@@ -1,5 +1,5 @@
 
-package org.github.ponking66.ccecdit.completion.yaml;
+package org.github.ponking66.ccecdit.completion;
 
 import com.intellij.codeInsight.completion.CompletionContributor;
 import com.intellij.codeInsight.completion.CompletionParameters;
@@ -8,19 +8,20 @@ import com.intellij.codeInsight.completion.CompletionType;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.patterns.PsiElementPattern;
 import com.intellij.psi.PsiElement;
-import org.github.ponking66.ccecdit.completion.DictCompletionProvider;
-import org.jetbrains.yaml.psi.YAMLFile;
 
 import static com.intellij.patterns.PlatformPatterns.psiElement;
 
-public class YamlDictCompletionContributor extends CompletionContributor implements DumbAware {
+public class CSharpDictCompletionContributor extends CompletionContributor implements BaseCompletion, DumbAware {
 
-    public YamlDictCompletionContributor() {
+    public CSharpDictCompletionContributor() {
         CompletionProvider<CompletionParameters> provider = new DictCompletionProvider();
-        extend(CompletionType.BASIC, inPyFile(), provider);
+        // C# identifiers (variables, methods, fields, parameters, classes, etc.)
+        // Using generic pattern as Rider uses ReSharper PSI structure
+        extend(CompletionType.BASIC, inPsiElement(), provider);
     }
 
-    private static PsiElementPattern.Capture<PsiElement> inPyFile() {
-        return psiElement().inFile(psiElement(YAMLFile.class));
+    @Override
+    public PsiElementPattern.Capture<PsiElement> inPsiElement() {
+        return psiElement(PsiElement.class);
     }
 }
