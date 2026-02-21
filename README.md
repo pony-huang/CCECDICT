@@ -18,7 +18,7 @@
 
 ---
 
-<img src="example.gif"  style="text-align: center"  width="426"  alt="images"/>
+<img src="example.png"  style="text-align: center"  width="426"  alt="images"/>
 
 **注意：** ECDICT 单词库庞大，插件仅保存在[10000个最常见英语单词的列表](https://github.com/first20hours/google-10000-english)，另有需求请自行配置[自定义数据库](https://github.com/PonKing66/CCECDICT)。
 
